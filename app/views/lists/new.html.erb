@@ -1,0 +1,20 @@
+<div class="navbar bg-light">
+  <div class="navbar-brand mx-3"><%= link_to "🍿", lists_path %></div>
+  <div class="d-flex align-items-center">
+    <div class="nav-item">My lists</div>
+    <div class="nav-item mx-3"><%= link_to "New list", new_list_path %></div>
+  </div>
+</div>
+
+<div class="banner" style="background-image: linear-gradient(rgba(0,0,0,0.4),rgba(0,0,0,0.4)), url(https://murphys-movies.vercel.app/movie-poster-placeholder.svg);">
+  <div class="container">
+    <h1>Create a new list</h1>
+  </div>
+</div>
+
+<div class="container my-4">
+  <%= simple_form_for(@list) do |f| %>
+    <%= f.input :name %>
+    <%= f.submit %>
+  <% end %>
+</div>

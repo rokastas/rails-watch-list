@@ -1,7 +1,7 @@
 <div class="navbar bg-light">
   <div class="navbar-brand mx-3"><%= link_to "🍿", lists_path %></div>
   <div class="d-flex align-items-center">
-    <div class="nav-item">My lists</div>
+    <div class="nav-item"><%= link_to "My lists", lists_path %></div>
     <div class="nav-item mx-3"><%= link_to "New list", new_list_path %></div>
   </div>
 </div>
@@ -12,25 +12,36 @@
   </div>
 </div>
 
-<div class="container my-4">
+<div class="container my-4 d-flex justify-content-end">
   <button class="btn btn-success"><%= link_to "add a movie", new_list_bookmark_path(@list) %></button>
 </div>
 
-<div class="my-4 mx-5">
-  <div class="row row-cols-1 row-cols-md-4">
+<div class="container">
+  <div class="row">
     <% @bookmarks.each do |bookmark| %>
       <% movie = bookmark.movie %>
-        <div class="col d-flex justify-content-center">
-          <div class="card mb-4" style="width: 18rem;">
-            <img src="<%= movie.poster_url %>" class="card-img-top" alt="...">
+        <div class="col-6">
+          <div class="card mb-3" style="height: 450px;">
+            <img src="<%= movie.poster_url %>" class="card-img-top object-fit-cover h-50" style="width: w-50;" alt="...">
             <div class="card-body">
-              <div class="d-flex align-self-baseline justify-content-between">
-                <h5 class="card-title m-0"><strong><%= movie.title %></strong></h5>
-                <div><%= movie.rating %></div>
-              </div>
-              <div class="d-flex flex-column align-content-between flex-grow-1">
-                <p class="card-text mt-2"><%= movie.overview %></p>
-                <div><%= bookmark.comment %></div>
+              <div class="d-flex flex-column h-100">
+                <div class="d-flex w-100 align-self-baseline justify-content-between">
+                  <h5 class="card-title m-0"><strong><%= movie.title %></strong></h5>
+                  <div class="d-flex flex-row">
+                    <div class="mx-1"><%= movie.rating %></div>
+                    <div>⭐️</div>
+                  </div>
+                </div>
+                <div class="d-flex h-100 align-content-between flex-wrap">
+                  <div class="card-text mt-2"><%= movie.overview %></div>
+                  <div class="d-flex w-100 align-self-baseline justify-content-between">
+                    <div>
+                      <i class="fa-solid fa-quote-left"></i>
+                      <%= bookmark.comment %>
+                    </div>
+                    <div class="text-danger"><%= link_to "delete", bookmark_path(bookmark), data: {turbo_method: :delete, turbo_confirm: "Are you sure?"} %></div>
+                  </div>
+                </div>
               </div>
             </div>
           </div>

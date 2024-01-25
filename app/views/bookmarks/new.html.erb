@@ -1,7 +1,7 @@
 <div class="navbar bg-light">
   <div class="navbar-brand mx-3"><%= link_to "🍿", lists_path %></div>
   <div class="d-flex align-items-center">
-    <div class="nav-item">My lists</div>
+    <div class="nav-item"><%= link_to "My lists", lists_path %></div>
     <div class="nav-item mx-3"><%= link_to "New list", new_list_path %></div>
   </div>
 </div>
@@ -14,8 +14,8 @@
 
 <div class="container my-4">
   <%= simple_form_for [@list, @bookmark] do |f| %>
-    <%= f.input :comment %>
     <%= f.association :movie %>
+    <%= f.input :comment %>
     <%= f.submit %>
   <% end %>
 </div>

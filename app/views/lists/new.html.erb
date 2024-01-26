@@ -6,7 +6,7 @@
   </div>
 </div>
 
-<div class="banner" style="background-image: linear-gradient(rgba(0,0,0,0.4),rgba(0,0,0,0.4)), url(https://murphys-movies.vercel.app/movie-poster-placeholder.svg);">
+<div class="banner" style="background-image: linear-gradient(rgba(0,0,0,0.4),rgba(0,0,0,0.4)), url(https://as2.ftcdn.net/v2/jpg/01/90/84/33/1000_F_190843325_IwO7Y4g7xcBNmMd2JN82gdYt0St5KsMT.jpg);">
   <div class="container">
     <h1>Create a new list</h1>
   </div>
@@ -15,6 +15,7 @@
 <div class="container my-4">
   <%= simple_form_for(@list) do |f| %>
     <%= f.input :name %>
+    <%= f.input :photo, as: :file %>
     <%= f.submit %>
   <% end %>
 </div>
